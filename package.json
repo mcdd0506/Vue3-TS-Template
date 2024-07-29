@@ -13,7 +13,8 @@
     "lint:stylelint": "stylelint  \"**/*.{css,scss,vue,html}\" --fix",
     "lint:lint-staged": "lint-staged",
     "format": "prettier --write src/",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "commit": "git-cz"
   },
   "dependencies": {
     "pinia": "^2.1.7",
@@ -31,6 +32,8 @@
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
     "@vue/tsconfig": "^0.5.1",
+    "commitizen": "^4.3.0",
+    "cz-git": "^1.9.4",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-import-resolver-typescript": "^3.6.1",
@@ -71,5 +74,10 @@
       "stylelint --fix --allow-empty-input",
       "prettier --write"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-git"
+    }
   }
 }
