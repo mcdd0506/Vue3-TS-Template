@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
 import { autoImportPlugin } from './autoImportPlugin'
+import { mockPlugin } from './mock'
 import { px2remPlugin } from './px2remPlugin'
 import { svgLoaderPlugin } from './svgLoaderPlugin'
 import { unocssPlugin } from './unocssPlugin'
@@ -22,7 +23,8 @@ export const usePlugins = (isBuild: boolean, viteEnv: ViteEnv) => {
   plugins.push(px2remPlugin())
   plugins.push(svgLoaderPlugin())
   plugins.push(unocssPlugin())
-
+  // 是否使用 mock
+  VITE_OPEN_MOCK && plugins.push(mockPlugin(VITE_MOCK_ALL))
   // 开发需要
   if (!isBuild) {
     plugins.push(vueDevToolsPlugin())

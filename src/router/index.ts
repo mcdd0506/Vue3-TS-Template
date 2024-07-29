@@ -33,6 +33,10 @@ export const routes: RouteRecordRaw[] = [
   {
     path: '/img',
     component: () => import('@/views/img/index.vue')
+  },
+  {
+    path: '/mock',
+    component: () => import('@/views/mock/index.vue')
   }
 ]
 

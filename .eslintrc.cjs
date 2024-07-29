@@ -84,6 +84,7 @@ module.exports = {
     ],
     'vue/multi-word-component-names': 'off',
     'import/prefer-default-export': 'off',
-    'no-unused-expressions': 'off'
+    'no-unused-expressions': 'off',
+    'no-console': 'off'
   }
 }

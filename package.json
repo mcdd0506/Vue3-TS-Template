@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.3.1",
+    "axios": "^1.7.2",
     "element-plus": "^2.7.8",
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
@@ -50,6 +51,7 @@
     "eslint-plugin-vue": "^9.23.0",
     "husky": "^8.0.0",
     "lint-staged": "^15.2.7",
+    "mockjs": "^1.1.0",
     "npm-run-all2": "^6.2.0",
     "optional": "^0.1.4",
     "postcss": "^8.4.40",
@@ -73,6 +75,7 @@
     "vite": "^5.3.1",
     "vite-plugin-compression": "^0.5.1",
     "vite-plugin-image-optimizer": "^1.1.8",
+    "vite-plugin-mock": "2.9.6",
     "vite-plugin-progress": "^0.0.7",
     "vite-plugin-px2rem": "^1.0.4",
     "vite-plugin-restart": "^0.4.1",
