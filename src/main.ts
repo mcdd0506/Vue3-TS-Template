@@ -1,3 +1,6 @@
+// 全局样式引入
+import '@/styles/index.scss'
+
 import { createApp } from 'vue'
 
 import usePinia from '@/store'
