@@ -81,7 +81,8 @@ module.exports = {
           caseInsensitive: true
         }
       }
-    ]
-
+    ],
+    'vue/multi-word-component-names': 'off',
+    'import/prefer-default-export': 'off'
   }
 }
