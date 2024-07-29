@@ -1,5 +1,7 @@
 // 全局样式引入
 import '@/styles/index.scss'
+// eslint-disable-next-line import/no-unresolved
+import 'virtual:uno.css' // uno.css
 
 import { createApp } from 'vue'
 

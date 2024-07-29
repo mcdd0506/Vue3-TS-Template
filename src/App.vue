@@ -2,6 +2,7 @@
   <div>
     <router-link to="/home">home</router-link>
     <router-link to="/about">about</router-link>
+    <router-link to="/rem">rem</router-link>
     <router-view></router-view>
   </div>
 </template>

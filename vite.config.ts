@@ -1,13 +1,14 @@
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { fileURLToPath, URL } from 'node:url'
+import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
+import { px2rem } from 'vite-plugin-px2rem'
 import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import'
 import vueDevTools from 'vite-plugin-vue-devtools'
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -48,6 +49,11 @@ export default defineConfig({
           }
         }
       ]
+    }),
+    UnoCSS(),
+    px2rem({
+      width: 750,
+      rootFontSize: 16
     })
   ],
   resolve: {
