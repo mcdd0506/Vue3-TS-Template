@@ -6,6 +6,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
+import viteCompression from 'vite-plugin-compression'
 import { px2rem } from 'vite-plugin-px2rem'
 import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import'
 import vueDevTools from 'vite-plugin-vue-devtools'
@@ -54,6 +55,14 @@ export default defineConfig({
     px2rem({
       width: 750,
       rootFontSize: 16
+    }),
+    viteCompression({
+      verbose: true, // 默认即可
+      disable: false, // 开启压缩(不禁用)，默认即可
+      deleteOriginFile: false, // 删除源文件
+      threshold: 10240, // 压缩前最小文件大小
+      algorithm: 'gzip', // 压缩算法
+      ext: '.gz' // 文件类型
     })
   ],
   resolve: {
