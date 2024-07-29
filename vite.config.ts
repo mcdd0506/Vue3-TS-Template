@@ -1,17 +1,36 @@
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { fileURLToPath, URL } from 'node:url'
+import { visualizer } from 'rollup-plugin-visualizer'
 import UnoCSS from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import viteCompression from 'vite-plugin-compression'
+import progress from 'vite-plugin-progress'
 import { px2rem } from 'vite-plugin-px2rem'
+import ViteRestart from 'vite-plugin-restart'
 import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import'
 import vueDevTools from 'vite-plugin-vue-devtools'
+
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    // 监听所有公共 ip
+    host: '0.0.0.0',
+    cors: true,
+    port: 3300,
+    proxy: {
+      // 前缀
+      '/api': {
+        target: 'http://www.example.com',
+        changeOrigin: true,
+        // 前缀重写
+        rewrite: (path: string) => path.replace(/^\/api/, '/api')
+      }
+    }
+  },
   plugins: [
     vue(),
     vueJsx(),
@@ -63,6 +82,15 @@ export default defineConfig({
       threshold: 10240, // 压缩前最小文件大小
       algorithm: 'gzip', // 压缩算法
       ext: '.gz' // 文件类型
+    }),
+    progress(),
+    ViteRestart({
+      restart: ['*.config.[jt]s', '**/config/*.[jt]s', '*.config.cjs']
+    }),
+    visualizer({
+      open: true, // 注意这里要设置为 true，否则无效
+      gzipSize: true,
+      brotliSize: true
     })
   ],
   resolve: {

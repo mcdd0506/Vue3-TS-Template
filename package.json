@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "vite build",
@@ -54,6 +54,7 @@
     "postcss-html": "^1.7.0",
     "postcss-scss": "^4.0.9",
     "prettier": "^3.2.5",
+    "rollup-plugin-visualizer": "^5.12.0",
     "sass": "^1.77.8",
     "stylelint": "^16.8.0",
     "stylelint-config-html": "^1.1.0",
@@ -67,7 +68,9 @@
     "unplugin-vue-components": "^0.27.3",
     "vite": "^5.3.1",
     "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-progress": "^0.0.7",
     "vite-plugin-px2rem": "^1.0.4",
+    "vite-plugin-restart": "^0.4.1",
     "vite-plugin-style-import": "^2.0.0",
     "vite-plugin-vue-devtools": "^7.3.1",
     "vue-tsc": "^2.0.21"
