@@ -6,6 +6,7 @@ public
 *.sh
 *.md
 
+index.html
 .eslintrc.cjs
 .prettierrc.json
 .stylelintrc.cjs
