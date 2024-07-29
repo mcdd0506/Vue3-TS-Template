@@ -1,4 +1,6 @@
 *.iml
+types/*
+!types/env.d.ts
 # Logs
 logs
 *.log
