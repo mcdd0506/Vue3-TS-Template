@@ -8,17 +8,17 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import viteCompression from 'vite-plugin-compression'
-import progress from 'vite-plugin-progress'
+// import progress from 'vite-plugin-progress'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import { px2rem } from 'vite-plugin-px2rem'
 import ViteRestart from 'vite-plugin-restart'
 import { createStyleImportPlugin, ElementPlusResolve } from 'vite-plugin-style-import'
 import vueDevTools from 'vite-plugin-vue-devtools'
-
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
     // 监听所有公共 ip
-    host: '0.0.0.0',
+    // host: '0.0.0.0',
     cors: true,
     port: 3300,
     proxy: {
@@ -28,6 +28,28 @@ export default defineConfig({
         changeOrigin: true,
         // 前缀重写
         rewrite: (path: string) => path.replace(/^\/api/, '/api')
+      }
+    }
+  },
+  build: {
+    // 10kb 以下，转 Base64
+    assetsInlineLimit: 1024 * 10,
+    // chunkSizeWarningLimit: 1500,//配置文件大小提醒限制，默认 500
+    rollupOptions: {
+      output: {
+        // 每个 node_modules 模块分成一个 js 文件
+        manualChunks(id: string) {
+          if (id.includes('node_modules')) {
+            // return 'vendor' // 第三方依赖合并在一起
+            // 把第三方依赖抽离出来
+            return id.toString().split('node_modules/.pnpm/')[1].split('/')[0].toString()
+          }
+          return undefined
+        },
+        // 用于从入口点创建的块的打包输出格式 [name] 表示文件名,[hash] 表示该文件内容 hash 值
+        entryFileNames: 'assets/js/[name].[hash].js', // 用于命名代码拆分时创建的共享块的输出命名
+        chunkFileNames: 'assets/js/[name].[hash].js', // 用于输出静态资源的命名，[ext] 表示文件扩展名
+        assetFileNames: 'assets/[ext]/[name].[hash].[ext]'
       }
     }
   },
@@ -83,7 +105,7 @@ export default defineConfig({
       algorithm: 'gzip', // 压缩算法
       ext: '.gz' // 文件类型
     }),
-    progress(),
+    // progress(),
     ViteRestart({
       restart: ['*.config.[jt]s', '**/config/*.[jt]s', '*.config.cjs']
     }),
@@ -91,7 +113,8 @@ export default defineConfig({
       open: true, // 注意这里要设置为 true，否则无效
       gzipSize: true,
       brotliSize: true
-    })
+    }),
+    ViteImageOptimizer()
   ],
   resolve: {
     alias: {
