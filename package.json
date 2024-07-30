@@ -101,10 +101,5 @@
       "stylelint --fix --allow-empty-input",
       "prettier --write"
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "node_modules/cz-git"
-    }
   }
 }
