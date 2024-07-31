@@ -1,7 +1,21 @@
 {
   "recommendations": [
-    "Vue.volar",
+    "esbenp.prettier-vscode",
+    "formulahendry.auto-close-tag",
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode"
+    "Vue.volar",
+    "steoates.autoimport",
+    "formulahendry.auto-rename-tag",
+    "ms-vscode-remote.remote-containers",
+    "ms-azuretools.vscode-docker",
+    "mhutchie.git-graph",
+    "donjayamanne.githistory",
+    "eamodio.gitlens",
+    "k--kato.intellij-idea-keybindings",
+    "ritwickdey.LiveServer",
+    "PKief.material-icon-theme",
+    "stylelint.vscode-stylelint",
+    "sdras.vue-vscode-snippets",
+    "ms-vscode-remote.remote-wsl"
   ]
 }
